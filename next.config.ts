@@ -2,12 +2,23 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-    turbopackFileSystemCacheForDev: true
+    turbopackFileSystemCacheForDev: true,
+    cacheComponents: true, // ✅ أضف هذا السطر لتفعيل "use cache"
   },
   images: {
-    domains: ["images.unsplash.com"]
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+    ],
   },
-  reactCompiler: true,
+  reactStrictMode: true,
+
   async rewrites() {
     return [
       {
