@@ -1,16 +1,17 @@
 import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
+
 interface Props {
     title: string;
-    image:string;
-    location:string;
-    slug:string;
-    date:string;
-    time:string;
+    image: string;
+    location: string;
+    slug: string;
+    date: string;
+    time: string;
 }
-const EventCard = ({title, image, slug, time, date, location}: Props
-) => {
+
+const EventCard = ({ title, image, slug, time, date, location }: Props) => {
     return (
         <Link href={`/events/${slug}`} id="event-card">
             <Image src={image} width={410} height={300} alt={title} className="poster" />
@@ -19,14 +20,16 @@ const EventCard = ({title, image, slug, time, date, location}: Props
                 <p>{location}</p>
             </div>
             <p className="title">{title}</p>
-            <div>
+            <div className="flex gap-1 items-center">
                 <Image src="/icons/calendar.svg" alt="date" width={14} height={14} />
                 <p>{date}</p>
-            </div><div>
+            </div>
+            <div className="flex gap-1 items-center">
                 <Image src="/icons/clock.svg" alt="time" width={14} height={14} />
                 <p>{time}</p>
             </div>
         </Link>
     )
 }
-export default EventCard
+
+export default EventCard;
